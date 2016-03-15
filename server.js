@@ -20,6 +20,7 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
 require('./routes/route69.js')(app);
+require('./routes/api/standardAPI.js')(app);
 
 app.listen(port, function (err) {
     if (err) console.log('ERROR:', err);
