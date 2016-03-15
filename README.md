@@ -1,2 +1,2 @@
-# BlankCanvas
-A blank canvas project. Includes setup for: Express, EJS, Bootstrap, and JQuery
+# Test Suite Project
+Just a scratch pad for ideas on the architecture of the Suites and tests approach
