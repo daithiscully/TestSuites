@@ -27,14 +27,14 @@
                     <h4 class="modal-title">Create new Test Suite</h4>
                 </div>
                 <div class="modal-body">
-                    <form class="form-inline">
+                    <form action="/createRoute" class="form-inline" method="post">
                         <div class="form-group">
                             <label class="sr-only" for="suiteName">Suite Name</label>
-                            <input type="email" class="form-control" id="suiteName" placeholder="Name">
+                            <input type="text" name="name" class="form-control" id="suiteName" placeholder="Name">
                         </div>
                         <div class="form-group">
                             <label class="sr-only" for="suiteDesc">Password</label>
-                            <input type="password" class="form-control" id="suiteDesc" placeholder="Description...">
+                            <input type="text" name="description" class="form-control" id="suiteDesc" placeholder="Description...">
                         </div>
                         <button type="submit" class="btn btn-primary">Save</button>
                     </form>
