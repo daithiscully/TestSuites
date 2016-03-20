@@ -37,13 +37,13 @@
         <hr/>
     </div>
     <div class="row">
-        <h2>Load your Data from the Database</h2>
+        <h2>Load all your tests from the Database</h2>
         <!-- Trigger the view database contents modal with a button -->
-        <button id="readDatabaseBtn" type="button" class="btn btn-info btn-lg" data-toggle="modal"
-                data-target="#readDatabaseModal">Load Data
+        <button id="getAllTestsBtn" type="button" class="btn btn-info btn-lg" data-toggle="modal"
+                data-target="#viewAllTestsModal">Load Data
         </button>
         <!-- Create Suite Modal -->
-        <% include partials/modals/ReadDatabaseModal.ejs %>
+        <% include partials/modals/ViewAllTestsModal.ejs %>
         <hr/>
     </div>
 </div>
@@ -56,26 +56,26 @@
     socket.on('connect', function () {
         console.log('Connected to the Server via Socket...');
     });
-    $("#readDatabaseBtn").click(function () {
-        socket.emit('readDatabase', 'test_suites');
+    $("#getAllTestsBtn").click(function () {
+        socket.emit('getAllTests', 'test_suites');
     });
 
-    socket.on('databaseContents', function (data) {
-        $("#databaseContents").html(`
+    socket.on('allTests', function (data) {
+        $("#allTests").html(`
         <table class="table table-striped table-hover">
             <thead>
                 <tr>
                     <th>Test Name</th>
                 </tr>
             </thead>
-            <tbody id="databaseContentsData">
+            <tbody id="testsFromDatabase">
 
             </tbody>
         </table>
         `);
 
         data.forEach(function (test) {
-            $("#databaseContentsData").append(`
+            $("#testsFromDatabase").append(`
             <tr>
                 <td>` + test.name + `</td>
             </tr>
