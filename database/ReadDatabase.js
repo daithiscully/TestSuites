@@ -3,7 +3,7 @@ var localDB = require('./ConnectionSettings');
 
 var dataBaseData;
 
-var readDatabase = function (databaseName, callback) {
+var getAllTests = function (databaseName, callback) {
     localDB.getConnection(function (err, connection) {
         if (err) {
             connection.release();
@@ -29,4 +29,6 @@ var readDatabase = function (databaseName, callback) {
     });
 };
 
-module.exports = readDatabase;
+module.exports = {
+    getTests: getAllTests
+}
