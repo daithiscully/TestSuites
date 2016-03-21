@@ -15,6 +15,11 @@ body {
     color: #000;
 }
 
+/* Modal Styles */
+.modal-body {
+
+}
+
 /* Footer Styles */
 .footer {
     position: relative;

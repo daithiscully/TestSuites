@@ -1,7 +1,6 @@
 <!-- Modal -->
 <div class="modal fade" id="createTestModal" role="dialog">
     <div class="modal-dialog">
-
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
@@ -10,21 +9,32 @@
             </div>
             <div class="modal-body">
                 <form action="/createRoute/test" class="form-inline" method="post">
-                    <div class="form-group">
-                        <label class="sr-only" for="testName">Test Name</label>
-                        <input type="text" name="name" class="form-control" id="testName" placeholder="Name">
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="suiteId">Select Suite to save test into:</label>
+                            <select class="form-control" name="suiteId" id="selectSuite">
+                            </select>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label class="sr-only" for="testDesc">Password</label>
-                        <input type="text" name="description" class="form-control" id="testDesc" placeholder="Description...">
+                    <hr />
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="sr-only" for="testName">Test Name</label>
+                            <input type="text" name="name" class="form-control" id="testName" placeholder="Name">
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="testDesc">Password</label>
+                            <input type="text" name="description" class="form-control" id="testDesc"
+                                   placeholder="Description...">
+                        </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Save</button>
+                    <hr />
+                    <button type="submit" class="btn btn-primary btn-lg">Save</button>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
-
     </div>
 </div>

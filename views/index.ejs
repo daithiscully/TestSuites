@@ -30,7 +30,8 @@
     <div class="row">
         <h2>Create a new Test</h2>
         <!-- Trigger the create Test modal with a button -->
-        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#createTestModal">Create
+        <button id="getAllSuitesBtn" type="button" class="btn btn-info btn-lg" data-toggle="modal"
+                data-target="#createTestModal">Create
         </button>
         <!-- Create Suite Modal -->
         <% include partials/modals/CreateTestModal.ejs %>
@@ -82,6 +83,18 @@
         `);
         })
 
+    });
+
+    $("#getAllSuitesBtn").click(function () {
+        socket.emit('getAllSuites', 'test_suites');
+    });
+
+    socket.on('allSuites', function (suites) {
+        suites.forEach(function (suite) {
+            $("#selectSuite").append(`
+                <option value=` + suite.id + `>` + suite.name + `</option>
+        `);
+        })
     });
 </script>
 </body>

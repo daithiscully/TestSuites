@@ -11,8 +11,8 @@ router.post('/suite', function (req, res, next) {
 });
 
 router.post('/test', function (req, res, next) {
-    console.log('Name: ' + req.body.name + '\nDescription: ' + req.body.description);
-    UpdateDatabase.saveTest('test_suites', '1', req.body.name, 'Chrome', req.body.description, function(){
+    console.log('Suite ID: ' + req.body.suiteId + 'Name: ' + req.body.name + '\nDescription: ' + req.body.description);
+    UpdateDatabase.saveTest('test_suites', req.body.suiteId, req.body.name, 'Chrome', req.body.description, function(){
         console.log('Test Saved');
     });
     res.redirect('/');
