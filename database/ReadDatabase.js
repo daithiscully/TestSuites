@@ -26,6 +26,31 @@ var getAllTests = function (databaseName, callback) {
     });
 };
 
+var getAllTestsInSuite = function (databaseName, suiteId, callback) {
+    localDB.getConnection(function (err, connection) {
+        if (err) {
+            connection.release();
+            console.log('Error in connection database');
+            res.json({"code": 100, "status": "Error in connection database"});
+            return;
+        }
+
+        console.log('ReadDatabase is connected as id ' + connection.threadId);
+        console.log('-------SuiteID: ' + suiteId);
+        connection.query('USE ' + databaseName);
+        connection.query('select * from tests where suite=?', suiteId, function (err, result) {
+            if (!(result >= 0)) {
+                connection.release();
+                return callback(result);
+            } else {
+                console.log('ERROR in ReadDatabase');
+                connection.release();
+                return callback(result);
+            }
+        });
+    });
+};
+
 var getAllSuites = function (databaseName, callback) {
     localDB.getConnection(function (err, connection) {
         if (err) {
@@ -53,5 +78,6 @@ var getAllSuites = function (databaseName, callback) {
 
 module.exports = {
     getTests: getAllTests,
-    getSuites: getAllSuites
+    getSuites: getAllSuites,
+    getAllTestsInSuite: getAllTestsInSuite
 }

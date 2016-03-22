@@ -57,6 +57,61 @@
     socket.on('connect', function () {
         console.log('Connected to the Server via Socket...');
     });
+    $("#getTestsForSuite").change(function () {
+        var getTestsForSuite =  $(this).val();
+        console.log('SuiteId Got is: ' + getTestsForSuite);
+        socket.emit('getTestsForSuite', 'test_suites', getTestsForSuite);
+    });
+
+    socket.on('allTests', function (data) {
+        $("#allTests").html(`
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Test Name</th>
+                </tr>
+            </thead>
+            <tbody id="testsFromDatabase">
+
+            </tbody>
+        </table>
+        `);
+
+        data.forEach(function (test) {
+            $("#testsFromDatabase").append(`
+            <tr>
+                <td>` + test.name + `</td>
+            </tr>
+        `);
+        })
+
+    });
+
+    $("#getAllSuitesBtn").click(function () {
+        socket.emit('getAllSuites', 'test_suites');
+    });
+
+    $("#getAllTestsBtn").click(function () {
+        socket.emit('getAllSuites', 'test_suites');
+    });
+
+    socket.on('allSuites', function (suites) {
+        suites.forEach(function (suite) {
+            $("#selectSuite").append(`
+                <option value=` + suite.id + `>` + suite.name + `</option>
+        `);
+            $("#getTestsForSuite").append(`
+                <option value=` + suite.id + `>` + suite.name + `</option>
+        `);
+        })
+
+    });
+</script>
+<!--<script>
+    var socket = io.connect();
+    socket.on('connect', function () {
+        console.log('Connected to the Server via Socket...');
+    });
     $("#getAllTestsBtn").click(function () {
         socket.emit('getAllTests', 'test_suites');
     });
@@ -96,7 +151,7 @@
         `);
         })
     });
-</script>
+</script>-->
 </body>
 
 </html>

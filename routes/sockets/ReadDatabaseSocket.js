@@ -14,6 +14,14 @@ module.exports = function (io) {
             });
         });
 
+        client.on('getTestsForSuite', function (database, suiteId) {
+            console.log('ddddddd: ' + suiteId);
+            ReadDatabase.getAllTestsInSuite(database, suiteId, function (data) {
+                console.log('Get Tests for Suite data: \n' + data);
+                client.emit('allTests', data);
+            });
+        });
+
         client.on('getAllSuites', function (database) {
             ReadDatabase.getSuites(database, function (data) {
                 console.log(JSON.stringify(data));
