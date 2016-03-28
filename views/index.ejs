@@ -97,6 +97,7 @@
 
     socket.on('allSuites', function (suites) {
         $("#getTestsForSuite").empty();
+        $("#selectSuite").empty();
         suites.forEach(function (suite) {
             $("#selectSuite").append(`
                 <option value=` + suite.id + `>` + suite.name + `</option>
