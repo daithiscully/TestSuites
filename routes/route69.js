@@ -3,7 +3,7 @@ var checkForDB = require('../database/CheckIfDatabaseExists.js');
 
 module.exports = function (app) {
     app.get('/', function (req, res) {
-        checkForDB('test_suites');
+        checkForDB('app_user_db');
         res.render('index.ejs', {
             title: 'Welcome'
         }); // load the index.ejs file
